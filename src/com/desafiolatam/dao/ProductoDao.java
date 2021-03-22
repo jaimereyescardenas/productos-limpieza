@@ -11,5 +11,6 @@ public interface ProductoDao {
 	public Producto agregarProducto(Producto producto);
 	public Producto modificarProducto(Producto producto);
 	public boolean eliminarProducto(int id);
+	public int obtenerUltimoId();
 	
 }

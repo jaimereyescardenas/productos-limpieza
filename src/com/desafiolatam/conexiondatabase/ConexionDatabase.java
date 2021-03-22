@@ -11,9 +11,9 @@ public class ConexionDatabase {
 	private static final String USERNAME = "desafiolatam";
 	private static final String PASSWORD = "desafiolatam";
 	
-	private Connection conexion = null;
+	private static Connection conexion = null;
 	
-	public Connection crearConexion() {
+	private static void crearConexion() {
 		try {
 			Class.forName(DRIVER);
 			conexion = DriverManager.getConnection(URL, USERNAME, PASSWORD);
@@ -22,7 +22,15 @@ public class ConexionDatabase {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static Connection obtenerConexion() {
+		
+		if (conexion == null) {
+			crearConexion();
+		}
 		return conexion;
+		
 	}
 
 }
