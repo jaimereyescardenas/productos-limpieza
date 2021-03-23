@@ -95,6 +95,7 @@ public class ProductoDaoImpl implements ProductoDao {
 				+ "VALUES (?, ?, ?, ?, ?);";
 		
 		try {
+			
 			PreparedStatement pstm = conn.prepareStatement(query);
 			
 			pstm.setInt(1, producto.getId());

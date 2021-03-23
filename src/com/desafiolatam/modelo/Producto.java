@@ -2,7 +2,7 @@ package com.desafiolatam.modelo;
 
 public class Producto {
 	
-private int id;
+	private int id;
 	
 	private String nombre;
 	

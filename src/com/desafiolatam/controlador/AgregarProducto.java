@@ -7,27 +7,62 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.desafiolatam.dao.ProductoDao;
+import com.desafiolatam.dao.ProductoDaoImpl;
+import com.desafiolatam.modelo.Producto;
+
 /**
  * Servlet implementation class AgregarProducto
  */
 @WebServlet("/AgregarProducto")
 public class AgregarProducto extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
+	
+	private ProductoDao productoDao = new ProductoDaoImpl();
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.getRequestDispatcher("AgregarProducto.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		String nombreParam = request.getParameter("nombre");
+		String descripcionParam = request.getParameter("descripcion");
+		String precioParam = request.getParameter("precio");
+		String categoriaParam = request.getParameter("categoria");
+		
+		int precio = Integer.parseInt(precioParam);
+		int categoria = Integer.parseInt(categoriaParam);
+		
+		Producto producto = new Producto();
+		
+		int id = productoDao.obtenerUltimoId();
+		
+		if (id <= 0) {
+			request.getRequestDispatcher("Error.jsp").forward(request, response);
+		}
+		
+		producto.setId(id);
+		producto.setNombre(nombreParam);
+		producto.setDescripcion(descripcionParam);
+		producto.setPrecio(precio);
+		producto.setIdCategoria(categoria);
+		
+		Producto productoResponse = productoDao.agregarProducto(producto);
+		
+		if (productoResponse.getId() == 0) {
+			request.getRequestDispatcher("Error.jsp").forward(request, response);
+		}
+		
+		request.getRequestDispatcher("Inicio.jsp").forward(request, response);
+		
 	}
 
 }
