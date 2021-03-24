@@ -42,6 +42,8 @@ public class AgregarProducto extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
+		
 		String nombreParam = request.getParameter("nombre");
 		String descripcionParam = request.getParameter("descripcion");
 		String precioParam = request.getParameter("precio");
@@ -54,11 +56,12 @@ public class AgregarProducto extends HttpServlet {
 		
 		int id = productoDao.obtenerUltimoId();
 		
-		if (id <= 0) {
+		if (id < 0) {
 			request.getRequestDispatcher("Error.jsp").forward(request, response);
+			return;
 		}
 		
-		producto.setId(id);
+		producto.setId(id+1);
 		producto.setNombre(nombreParam);
 		producto.setDescripcion(descripcionParam);
 		producto.setPrecio(precio);
@@ -68,6 +71,7 @@ public class AgregarProducto extends HttpServlet {
 		
 		if (productoResponse.getId() == 0) {
 			request.getRequestDispatcher("Error.jsp").forward(request, response);
+			return;
 		}
 		
 		request.getRequestDispatcher("Inicio.jsp").forward(request, response);

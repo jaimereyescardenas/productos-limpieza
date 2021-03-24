@@ -27,14 +27,14 @@
 				</c:if>
 				<c:forEach items="${productos}" var="producto">
 					<tr>
-						<td><c:out value="${producto.getProducto.getId()}" /></td>
-						<td><c:out value="${producto.getProducto.getNombre()}" /></td>
-						<td><c:out value="${producto.getProducto.getDescripcion()}" /></td>
-						<td><c:out value="${producto.getProducto.getPrecio()}" /></td>
-						<td><c:out value="${producto.getCategoria.getNombre()}" /></td>
+						<td><c:out value="${producto.getProducto().getId()}" /></td>
+						<td><c:out value="${producto.getProducto().getNombre()}" /></td>
+						<td><c:out value="${producto.getProducto().getDescripcion()}" /></td>
+						<td><c:out value="${producto.getProducto().getPrecio()}" /></td>
+						<td><c:out value="${producto.getCategoria().getNombre()}" /></td>
 						<td>
-							<a href="ModificarProducto?id=${producto.getProducto.getId()}">Editar</a>&nbsp;
-							<a href="EliminarProducto?id=${producto.getProducto.getId()}">Eliminar</a>
+							<a href="ModificarProducto?id=${producto.getProducto().getId()}">Editar</a>&nbsp;
+							<a href="EliminarProducto?id=${producto.getProducto().getId()}">Eliminar</a>
 						</td>
 					</tr>
 				</c:forEach>

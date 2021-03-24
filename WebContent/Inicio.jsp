@@ -4,10 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Inicio</title>
 </head>
 <body>
-
+	<h1>Bienvenido/a</h1>
+	<a href="ListarProductos">Ver productos</a>
+	<a href="AgregarProducto">Agregar producto</a>
 </body>
 </html>

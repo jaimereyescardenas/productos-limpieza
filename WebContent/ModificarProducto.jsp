@@ -10,7 +10,7 @@
 <body>
 	<h1>Modificar producto</h1>
 	<form action="ModificarProducto" method="POST">
-		<input type="hidden" value="${producto.getId()}" />
+		<input type="hidden" name="id" value="${producto.getId()}" />
 		<div>
 			<label for="nombre">Nombre</label>
 			<input type="text" name="nombre" value="${producto.getNombre()}" />

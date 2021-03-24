@@ -1,14 +1,19 @@
 package com.desafiolatam.controlador;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.desafiolatam.dao.CategoriaDao;
+import com.desafiolatam.dao.CategoriaDaoImpl;
 import com.desafiolatam.dao.ProductoDao;
 import com.desafiolatam.dao.ProductoDaoImpl;
+import com.desafiolatam.modelo.Categoria;
 import com.desafiolatam.modelo.Producto;
 
 /**
@@ -20,6 +25,8 @@ public class ModificarProducto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private ProductoDao productoDao = new ProductoDaoImpl();
+	
+	private CategoriaDao categoriaDao = new CategoriaDaoImpl();
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -34,6 +41,8 @@ public class ModificarProducto extends HttpServlet {
 		}
 		
 		Producto producto = productoDao.buscarProducto(id);
+		List<Categoria> categorias = categoriaDao.listarCategorias();
+		request.setAttribute("categorias", categorias);
 		request.setAttribute("producto", producto);
 		
 		request.getRequestDispatcher("ModificarProducto.jsp").forward(request, response);
@@ -44,6 +53,8 @@ public class ModificarProducto extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		request.setCharacterEncoding("UTF-8");
+		
 		String idParam = request.getParameter("id");
 		String nombreParam = request.getParameter("nombre");
 		String descripcionParam = request.getParameter("descripcion");

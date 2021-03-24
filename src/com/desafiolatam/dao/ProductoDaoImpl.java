@@ -185,7 +185,7 @@ public class ProductoDaoImpl implements ProductoDao {
 		
 		conn = ConexionDatabase.obtenerConexion();
 
-		int resultado = 0;
+		int resultado = -1;
 		
 		if (conn == null) {
 			return resultado;
