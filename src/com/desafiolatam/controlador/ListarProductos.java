@@ -30,7 +30,7 @@ public class ListarProductos extends HttpServlet {
 		
 		List<ProductoCategoria> productos = productoCategoriaDao.listarProductosCategoria();
 		request.setAttribute("productos", productos);
-		request.getRequestDispatcher("ListarProductos").forward(request, response);
+		request.getRequestDispatcher("ListarProductos.jsp").forward(request, response);
 	}
 
 }

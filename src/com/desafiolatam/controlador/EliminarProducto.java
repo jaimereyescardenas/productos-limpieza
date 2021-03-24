@@ -25,6 +25,11 @@ public class EliminarProducto extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String idParam = request.getParameter("id");
+		
+		if (idParam == null || idParam.isEmpty()) {
+			request.getRequestDispatcher("Error.jsp").forward(request, response);
+		}
+		
 		request.setAttribute("id", idParam);
 		request.getRequestDispatcher("EliminarProducto.jsp").forward(request, response);
 	}

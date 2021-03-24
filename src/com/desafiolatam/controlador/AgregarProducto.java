@@ -1,14 +1,19 @@
 package com.desafiolatam.controlador;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.desafiolatam.dao.CategoriaDao;
+import com.desafiolatam.dao.CategoriaDaoImpl;
 import com.desafiolatam.dao.ProductoDao;
 import com.desafiolatam.dao.ProductoDaoImpl;
+import com.desafiolatam.modelo.Categoria;
 import com.desafiolatam.modelo.Producto;
 
 /**
@@ -20,11 +25,15 @@ public class AgregarProducto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private ProductoDao productoDao = new ProductoDaoImpl();
+	
+	private CategoriaDao categoriaDao = new CategoriaDaoImpl();
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<Categoria> categorias = categoriaDao.listarCategorias();
+		request.setAttribute("categorias", categorias);
 		request.getRequestDispatcher("AgregarProducto.jsp").forward(request, response);
 	}
 

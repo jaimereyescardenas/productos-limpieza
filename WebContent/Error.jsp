@@ -4,10 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Error</title>
 </head>
 <body>
-
+	<p>Ha ocurrido un error.</p>
 </body>
 </html>

@@ -25,7 +25,18 @@ public class ModificarProducto extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("AgregarProducto.jsp").forward(request, response);
+		
+		String idParam = request.getParameter("id");
+		int id = Integer.parseInt(idParam);
+		
+		if (id <= 0) {
+			request.getRequestDispatcher("Error.jsp").forward(request, response);
+		}
+		
+		Producto producto = productoDao.buscarProducto(id);
+		request.setAttribute("producto", producto);
+		
+		request.getRequestDispatcher("ModificarProducto.jsp").forward(request, response);
 	}
 
 	/**
