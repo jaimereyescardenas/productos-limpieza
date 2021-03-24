@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class ConexionDatabase {
 	
-	private static final String DRIVER = "oracle.jdbc.oracleDriver";
+	private static final String DRIVER = "oracle.jdbc.driver.OracleDriver";
 	private static final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
 	private static final String USERNAME = "desafiolatam";
 	private static final String PASSWORD = "desafiolatam";
