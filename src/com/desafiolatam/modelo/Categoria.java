@@ -3,8 +3,9 @@ package com.desafiolatam.modelo;
 public class Categoria {
 	
 	private int id;
-	
 	private String nombre;
+	
+	// Constructor, getters y setters
 
 	public Categoria() {
 		super();
