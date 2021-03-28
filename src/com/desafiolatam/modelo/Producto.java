@@ -8,7 +8,7 @@ public class Producto {
 	private int precio;
 	private int idCategoria;
 	
-	// Constructor, getters y setters
+	// Constructores, getters y setters
 
 	public Producto() {
 		super();
@@ -23,44 +23,24 @@ public class Producto {
 		this.idCategoria = idCategoria;
 	}
 
-	public int getId() {
-		return id;
-	}
+	public int getId() { return id; }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+	public void setId(int id) { this.id = id; }
 
-	public String getNombre() {
-		return nombre;
-	}
+	public String getNombre() { return nombre; }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+	public void setNombre(String nombre) { this.nombre = nombre; }
 
-	public String getDescripcion() {
-		return descripcion;
-	}
+	public String getDescripcion() { return descripcion; }
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+	public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
 
-	public int getPrecio() {
-		return precio;
-	}
+	public int getPrecio() { return precio; }
 
-	public void setPrecio(int precio) {
-		this.precio = precio;
-	}
+	public void setPrecio(int precio) { this.precio = precio; }
 
-	public int getIdCategoria() {
-		return idCategoria;
-	}
+	public int getIdCategoria() { return idCategoria; }
 
-	public void setIdCategoria(int idCategoria) {
-		this.idCategoria = idCategoria;
-	}
+	public void setIdCategoria(int idCategoria) { this.idCategoria = idCategoria; }
 
 }
