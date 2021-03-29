@@ -16,9 +16,6 @@ import com.desafiolatam.dao.ProductoDaoImpl;
 import com.desafiolatam.modelo.Categoria;
 import com.desafiolatam.modelo.Producto;
 
-/**
- * Servlet implementation class AgregarProducto
- */
 @WebServlet("/AgregarProducto")
 public class AgregarProducto extends HttpServlet {
 	
@@ -28,19 +25,15 @@ public class AgregarProducto extends HttpServlet {
 	
 	private CategoriaDao categoriaDao = new CategoriaDaoImpl();
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		List<Categoria> categorias = categoriaDao.listarCategorias();
 		request.setAttribute("categorias", categorias);
 		request.getRequestDispatcher("AgregarProducto.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
 		

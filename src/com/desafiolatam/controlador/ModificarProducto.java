@@ -16,22 +16,16 @@ import com.desafiolatam.dao.ProductoDaoImpl;
 import com.desafiolatam.modelo.Categoria;
 import com.desafiolatam.modelo.Producto;
 
-/**
- * Servlet implementation class ModificarProducto
- */
 @WebServlet("/ModificarProducto")
 public class ModificarProducto extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	
 	private ProductoDao productoDao = new ProductoDaoImpl();
-	
 	private CategoriaDao categoriaDao = new CategoriaDaoImpl();
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		
 		String idParam = request.getParameter("id");
 		int id = Integer.parseInt(idParam);
@@ -48,10 +42,8 @@ public class ModificarProducto extends HttpServlet {
 		request.getRequestDispatcher("ModificarProducto.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");
 		
@@ -63,15 +55,13 @@ public class ModificarProducto extends HttpServlet {
 		
 		int precio = Integer.parseInt(precioParam);
 		int categoria = Integer.parseInt(categoriaParam);
-		
 		int id = Integer.parseInt(idParam);
-		
-		Producto producto = new Producto();
 		
 		if (id <= 0) {
 			request.getRequestDispatcher("Error.jsp").forward(request, response);
 		}
 		
+		Producto producto = new Producto();
 		producto.setId(id);
 		producto.setNombre(nombreParam);
 		producto.setDescripcion(descripcionParam);

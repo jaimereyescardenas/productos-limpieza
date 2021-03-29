@@ -10,9 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.desafiolatam.dao.ProductoDao;
 import com.desafiolatam.dao.ProductoDaoImpl;
 
-/**
- * Servlet implementation class EliminarProducto
- */
 @WebServlet("/EliminarProducto")
 public class EliminarProducto extends HttpServlet {
 	
@@ -20,10 +17,9 @@ public class EliminarProducto extends HttpServlet {
 	
 	private ProductoDao productoDao = new ProductoDaoImpl();
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		
 		String idParam = request.getParameter("id");
 		
 		if (idParam == null || idParam.isEmpty()) {
@@ -32,12 +28,11 @@ public class EliminarProducto extends HttpServlet {
 		
 		request.setAttribute("id", idParam);
 		request.getRequestDispatcher("EliminarProducto.jsp").forward(request, response);
+		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		
 		String idParam = request.getParameter("id");
 		int id = 0;
@@ -50,7 +45,6 @@ public class EliminarProducto extends HttpServlet {
 		productoDao.eliminarProducto(id);
 		
 		request.getRequestDispatcher("Inicio.jsp").forward(request, response);
-		
 		
 	}
 

@@ -13,9 +13,6 @@ import com.desafiolatam.dao.ProductoCategoriaDao;
 import com.desafiolatam.dao.ProductoCategoriaDaoImpl;
 import com.desafiolatam.dto.ProductoCategoria;
 
-/**
- * Servlet implementation class ListarProductos
- */
 @WebServlet("/ListarProductos")
 public class ListarProductos extends HttpServlet {
 	
@@ -23,10 +20,8 @@ public class ListarProductos extends HttpServlet {
 	
 	private ProductoCategoriaDao productoCategoriaDao = new ProductoCategoriaDaoImpl();
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		
 		List<ProductoCategoria> productos = productoCategoriaDao.listarProductosCategoria();
 		request.setAttribute("productos", productos);
