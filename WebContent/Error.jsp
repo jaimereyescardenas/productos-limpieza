@@ -9,5 +9,6 @@
 </head>
 <body>
 	<p>Ha ocurrido un error.</p>
+	<a href="${pageContext.request.contextPath}">Volver al inicio</a>
 </body>
 </html>
