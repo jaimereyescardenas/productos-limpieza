@@ -13,12 +13,14 @@ import com.desafiolatam.modelo.Producto;
 public class ProductoDaoImpl implements ProductoDao {
 	
 	private Connection conn;
+	private PreparedStatement pstm;
+	private ResultSet rs;
 	
 	@Override
 	public Producto buscarProducto(int id) {
 		
 		conn = ConexionDatabase.obtenerConexion();
-		
+
 		if (conn == null) {
 			return new Producto();
 		}
@@ -26,9 +28,9 @@ public class ProductoDaoImpl implements ProductoDao {
 		String query = "SELECT * FROM producto WHERE id_producto = ?;";
 		
 		try {
-			PreparedStatement pstm = conn.prepareStatement(query);
+			pstm = conn.prepareStatement(query);
 			pstm.setInt(1, id);
-			ResultSet rs = pstm.executeQuery();
+			rs = pstm.executeQuery();
 			Producto producto = new Producto();
 			
 			if (rs.next()) {
@@ -59,8 +61,8 @@ public class ProductoDaoImpl implements ProductoDao {
 		String query = "SELECT * FROM producto;";
 		
 		try {
-			PreparedStatement pstm = conn.prepareStatement(query);
-			ResultSet rs = pstm.executeQuery();
+			pstm = conn.prepareStatement(query);
+			rs = pstm.executeQuery();
 			List<Producto> lista = new ArrayList<>();
 			
 			while (rs.next()) {
@@ -96,7 +98,7 @@ public class ProductoDaoImpl implements ProductoDao {
 		
 		try {
 			
-			PreparedStatement pstm = conn.prepareStatement(query);
+			pstm = conn.prepareStatement(query);
 			
 			pstm.setInt(1, producto.getId());
 			pstm.setString(2, producto.getNombre());
@@ -126,11 +128,11 @@ public class ProductoDaoImpl implements ProductoDao {
 			return new Producto();
 		}
 		
-		String query = "UPDATE producto SET nombre_producto = ?, descripcion_producto = ?, precio_producto = ?, id_categoria = ? "
-				+ "WHERE id_producto = ?;";
+		String query = "UPDATE producto SET nombre_producto = ?, descripcion_producto = ?,"
+				+ " precio_producto = ?, id_categoria = ? WHERE id_producto = ?;";
 		
 		try {
-			PreparedStatement pstm = conn.prepareStatement(query);
+			pstm = conn.prepareStatement(query);
 			
 			pstm.setString(1, producto.getNombre());
 			pstm.setString(2, producto.getDescripcion());
@@ -163,7 +165,7 @@ public class ProductoDaoImpl implements ProductoDao {
 		String query = "DELETE FROM producto WHERE id_producto = ?;";
 		
 		try {
-			PreparedStatement pstm = conn.prepareStatement(query);
+			pstm = conn.prepareStatement(query);
 			
 			pstm.setInt(1, id);
 			
@@ -191,14 +193,14 @@ public class ProductoDaoImpl implements ProductoDao {
 			return resultado;
 		}
 		
-		String query = "SELECT MAX(id_producto) AS max FROM producto;";
+		String query = "SELECT MAX(id_producto) AS max_id FROM producto;";
 		
 		try {
-			PreparedStatement pstm = conn.prepareStatement(query);
-			ResultSet rs = pstm.executeQuery();
+			pstm = conn.prepareStatement(query);
+			rs = pstm.executeQuery();
 			
 			if (rs.next()) {
-				resultado = rs.getInt("max");
+				resultado = rs.getInt("max_id");
 			}
 			
 			return resultado;

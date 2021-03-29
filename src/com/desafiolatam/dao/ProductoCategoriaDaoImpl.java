@@ -10,7 +10,6 @@ import com.desafiolatam.modelo.Producto;
 public class ProductoCategoriaDaoImpl implements ProductoCategoriaDao {
 	
 	private ProductoDao productoDao = new ProductoDaoImpl();
-	
 	private CategoriaDao categoriaDao = new CategoriaDaoImpl();
 
 	@Override

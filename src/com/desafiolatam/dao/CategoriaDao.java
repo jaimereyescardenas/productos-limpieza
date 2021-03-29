@@ -7,7 +7,6 @@ import com.desafiolatam.modelo.Categoria;
 public interface CategoriaDao {
 	
 	public Categoria buscarCategoria(int id);
-	
 	public List<Categoria> listarCategorias();
 
 }

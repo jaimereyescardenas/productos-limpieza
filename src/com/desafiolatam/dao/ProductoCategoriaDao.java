@@ -7,5 +7,5 @@ import com.desafiolatam.dto.ProductoCategoria;
 public interface ProductoCategoriaDao {
 	
 	public List<ProductoCategoria> listarProductosCategoria();
-
+	
 }

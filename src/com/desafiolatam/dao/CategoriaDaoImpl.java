@@ -13,6 +13,8 @@ import com.desafiolatam.modelo.Categoria;
 public class CategoriaDaoImpl implements CategoriaDao {
 	
 	private Connection conn;
+	private PreparedStatement pstm;
+	private ResultSet rs;
 	
 	@Override
 	public Categoria buscarCategoria(int id) {
@@ -26,9 +28,9 @@ public class CategoriaDaoImpl implements CategoriaDao {
 		String query = "SELECT * FROM categoria WHERE id_categoria = ?";
 		
 		try {
-			PreparedStatement pstm = conn.prepareStatement(query);
+			pstm = conn.prepareStatement(query);
 			pstm.setInt(1, id);
-			ResultSet rs = pstm.executeQuery();
+			rs = pstm.executeQuery();
 			Categoria categoria = new Categoria();
 			
 			if (rs.next()) {
@@ -56,8 +58,8 @@ public class CategoriaDaoImpl implements CategoriaDao {
 		String query = "SELECT * FROM categoria";
 		
 		try {
-			PreparedStatement pstm = conn.prepareStatement(query);
-			ResultSet rs = pstm.executeQuery();
+			pstm = conn.prepareStatement(query);
+			rs = pstm.executeQuery();
 			List<Categoria> lista = new ArrayList<>();
 			
 			while (rs.next()) {
